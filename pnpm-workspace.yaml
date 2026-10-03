@@ -1,0 +1,6 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+  "@node-rs/argon2": true
+  "@node-rs/bcrypt": true
