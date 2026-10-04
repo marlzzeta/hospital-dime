@@ -1,6 +1,18 @@
-import type React from 'react'
+import React from 'react'
+import { RootLayout } from '@payloadcms/next/layouts'
+import config from '@payload-config'
+import { importMap } from './admin/importMap'
+import { payloadServerFunction } from './admin/server-actions'
 
-// Payload Admin usa su propio layout — no hereda el layout raíz del sitio
-const Layout = ({ children }: { children: React.ReactNode }) => children
-
-export default Layout
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <RootLayout
+      config={config}
+      importMap={importMap}
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      serverFunction={payloadServerFunction as any}
+    >
+      {children}
+    </RootLayout>
+  )
+}

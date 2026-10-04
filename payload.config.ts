@@ -4,6 +4,10 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { Users } from './collections/Users'
+import { Media } from './collections/Media'
+import { Specialties } from './collections/Specialties'
+import { Doctors } from './collections/Doctors'
+import { Pages } from './collections/Pages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -15,7 +19,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users],
+  collections: [Users, Media, Specialties, Doctors, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET!,
   typescript: {
@@ -23,7 +27,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI!,
+      connectionString: (process.env.DATABASE_URL ?? process.env.DATABASE_URI)!,
     },
   }),
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
