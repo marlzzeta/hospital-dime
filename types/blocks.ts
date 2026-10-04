@@ -89,12 +89,21 @@ export type LocationContactBlockData = {
   googleMapsEmbed?: string
 }
 
+export type ContactFormBlockData = {
+  blockType: 'contactForm'
+  id?: string
+  heading?: string
+  subheading?: string
+  recipientEmail?: string
+}
+
 export type LayoutBlock =
   | HeroBlockData
   | FeaturesBlockData
   | DoctorCarouselBlockData
   | TestimonialsBlockData
   | LocationContactBlockData
+  | ContactFormBlockData
 
 export type PageDoc = {
   id: string

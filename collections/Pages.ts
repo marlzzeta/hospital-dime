@@ -4,6 +4,7 @@ import { FeaturesBlock } from '../blocks/FeaturesBlock'
 import { DoctorCarouselBlock } from '../blocks/DoctorCarouselBlock'
 import { TestimonialsBlock } from '../blocks/TestimonialsBlock'
 import { LocationContactBlock } from '../blocks/LocationContactBlock'
+import { ContactFormBlock } from '../blocks/ContactFormBlock'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -35,6 +36,7 @@ export const Pages: CollectionConfig = {
         DoctorCarouselBlock,
         TestimonialsBlock,
         LocationContactBlock,
+        ContactFormBlock,
       ],
     },
     {

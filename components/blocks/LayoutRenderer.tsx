@@ -5,6 +5,7 @@ import { FeaturesSection } from './FeaturesSection'
 import { DoctorCarouselSection } from './DoctorCarouselSection'
 import { TestimonialsSection } from './TestimonialsSection'
 import { LocationContactSection } from './LocationContactSection'
+import { ContactFormSection } from './ContactFormSection'
 
 function BlockSkeleton() {
   return <div className="py-16 md:py-24 bg-slate-50 animate-pulse" />
@@ -26,6 +27,8 @@ function renderBlock(block: LayoutBlock, index: number) {
       return <TestimonialsSection key={block.id ?? index} block={block} />
     case 'locationContact':
       return <LocationContactSection key={block.id ?? index} block={block} />
+    case 'contactForm':
+      return <ContactFormSection key={block.id ?? index} block={block} />
     default:
       return null
   }
