@@ -8,12 +8,13 @@ import type { DoctorCarouselBlockData, DoctorDoc, MediaDoc, SpecialtyDoc } from 
 async function fetchDoctors(specialtyId?: string): Promise<DoctorDoc[]> {
   const payload = await getPayload()
   const where = specialtyId
-    ? { and: [{ featured: { equals: true } }, { specialty: { equals: specialtyId } }] }
-    : { featured: { equals: true } }
+    ? { and: [{ featured: { equals: true } as const }, { specialty: { equals: specialtyId } as const }] }
+    : { featured: { equals: true } as const }
 
   const { docs } = await payload.find({
     collection: 'doctors',
-    where,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    where: where as any,
     sort: 'order',
     limit: 8,
     depth: 2,
