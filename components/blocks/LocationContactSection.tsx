@@ -10,7 +10,7 @@ export function LocationContactSection({ block }: { block: LocationContactBlockD
     block
 
   return (
-    <Section background="white" id="contacto">
+    <Section background="white" id="ubicacion">
       <Container>
         <SectionHeading
           label="Contacto"

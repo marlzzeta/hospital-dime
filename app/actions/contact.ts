@@ -49,7 +49,13 @@ export async function submitContact(
     return { success: false, fieldErrors: parsed.error.flatten().fieldErrors }
   }
 
-  const { name, email, phone, message, recipientEmail, recaptchaToken } = parsed.data
+  const { name, email, phone, message, recaptchaToken } = parsed.data
+  const recipientEmail = parsed.data.recipientEmail || process.env.CONTACT_EMAIL || ''
+
+  if (!recipientEmail) {
+    console.error('No recipient email configured (set CONTACT_EMAIL env var or configure it in the CMS block)')
+    return { success: false, error: 'Error de configuración. Por favor llámanos directamente.' }
+  }
 
   const human = await verifyRecaptcha(recaptchaToken)
   if (!human) {

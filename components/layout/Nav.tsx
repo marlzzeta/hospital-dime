@@ -3,16 +3,15 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 
 const navLinks = [
   { label: 'Inicio', href: '/' },
-  { label: 'Especialidades', href: '#especialidades' },
+  { label: 'Especialidades', href: '#servicios' },
   { label: 'Médicos', href: '#medicos' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Contacto', href: '#contacto' },
 ]
 
 export function Nav() {
