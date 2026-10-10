@@ -4,9 +4,9 @@ type Background = 'white' | 'surface' | 'primary' | 'dark'
 
 const bgClasses: Record<Background, string> = {
   white:   'bg-white',
-  surface: 'bg-slate-50',
+  surface: 'bg-[#f9f9f9]',
   primary: 'bg-primary-600 text-white',
-  dark:    'bg-slate-900 text-white',
+  dark:    'bg-[#292929] text-white',
 }
 
 interface SectionProps {
@@ -29,19 +29,20 @@ interface SectionHeadingProps {
   title: string
   description?: string
   centered?: boolean
+  dark?: boolean
 }
 
-export function SectionHeading({ label, title, description, centered = true }: SectionHeadingProps) {
+export function SectionHeading({ label, title, description, centered = true, dark = false }: SectionHeadingProps) {
   return (
     <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
       {label && (
-        <span className="inline-block text-sm font-semibold uppercase tracking-widest text-primary-600 mb-3">
+        <span className={`inline-block text-sm font-semibold uppercase tracking-widest mb-3 ${dark ? 'text-primary-300' : 'text-[#4666ff]'}`}>
           {label}
         </span>
       )}
-      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">{title}</h2>
+      <h2 className={`text-3xl md:text-4xl font-bold leading-tight ${dark ? 'text-white' : 'text-[#031047]'}`}>{title}</h2>
       {description && (
-        <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">{description}</p>
+        <p className={`mt-4 text-lg max-w-2xl mx-auto leading-relaxed ${dark ? 'text-gray-300' : 'text-[#747b91]'}`}>{description}</p>
       )}
     </div>
   )

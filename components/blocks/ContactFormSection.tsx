@@ -54,22 +54,22 @@ export function ContactFormSection({ block }: Props) {
     state && !state.success && state.fieldErrors?.[name]?.[0]
 
   return (
-    <section className="py-16 md:py-24 bg-slate-50" id="contacto">
+    <section className="py-16 md:py-24 bg-[#f9f9f9]" id="contacto">
       <Container narrow>
         <div className="text-center mb-10">
-          <span className="inline-block text-primary-600 text-sm font-semibold uppercase tracking-widest mb-3">
+          <span className="inline-block text-[#4666ff] text-sm font-semibold uppercase tracking-widest mb-3">
             Contáctanos
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#031047] mb-3">
             {block.heading ?? '¿Necesitas una cita?'}
           </h2>
           {block.subheading && (
-            <p className="text-slate-600 max-w-xl mx-auto">{block.subheading}</p>
+            <p className="text-[#747b91] max-w-xl mx-auto">{block.subheading}</p>
           )}
         </div>
 
         {state?.success ? (
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
+          <div className="bg-green-50 border border-green-200 rounded-[20px] p-10 text-center">
             <div className="text-5xl mb-4">✓</div>
             <h3 className="text-xl font-semibold text-green-800 mb-2">¡Mensaje enviado!</h3>
             <p className="text-green-700">
@@ -79,19 +79,19 @@ export function ContactFormSection({ block }: Props) {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-6"
+            className="bg-white rounded-[20px] border border-[#dde3ff] p-8 space-y-6"
           >
             <input type="hidden" name="recipientEmail" value={block.recipientEmail ?? ''} />
 
             {state?.error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
+              <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
                 {state.error}
               </div>
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                <label className="block text-sm font-medium text-[#031047] mb-1.5">
                   Nombre completo <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -99,8 +99,8 @@ export function ContactFormSection({ block }: Props) {
                   type="text"
                   required
                   placeholder="Juan Pérez"
-                  className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition ${
-                    fieldError('name') ? 'border-red-400' : 'border-slate-200'
+                  className={`w-full rounded-full border px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition text-[#031047] placeholder:text-[#747b91] ${
+                    fieldError('name') ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
                 {fieldError('name') && (
@@ -109,7 +109,7 @@ export function ContactFormSection({ block }: Props) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                <label className="block text-sm font-medium text-[#031047] mb-1.5">
                   Correo electrónico <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -117,8 +117,8 @@ export function ContactFormSection({ block }: Props) {
                   type="email"
                   required
                   placeholder="juan@correo.com"
-                  className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition ${
-                    fieldError('email') ? 'border-red-400' : 'border-slate-200'
+                  className={`w-full rounded-full border px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition text-[#031047] placeholder:text-[#747b91] ${
+                    fieldError('email') ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
                 {fieldError('email') && (
@@ -128,19 +128,19 @@ export function ContactFormSection({ block }: Props) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">
+              <label className="block text-sm font-medium text-[#031047] mb-1.5">
                 Teléfono (opcional)
               </label>
               <input
                 name="phone"
                 type="tel"
                 placeholder="+504 9999-9999"
-                className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition"
+                className="w-full rounded-full border border-gray-200 px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition text-[#031047] placeholder:text-[#747b91]"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">
+              <label className="block text-sm font-medium text-[#031047] mb-1.5">
                 Mensaje <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -148,8 +148,8 @@ export function ContactFormSection({ block }: Props) {
                 required
                 rows={5}
                 placeholder="Cuéntanos en qué podemos ayudarte..."
-                className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition resize-none ${
-                  fieldError('message') ? 'border-red-400' : 'border-slate-200'
+                className={`w-full rounded-[16px] border px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-600 transition resize-none text-[#031047] placeholder:text-[#747b91] ${
+                  fieldError('message') ? 'border-red-400' : 'border-gray-200'
                 }`}
               />
               {fieldError('message') && (
@@ -160,13 +160,13 @@ export function ContactFormSection({ block }: Props) {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full bg-primary-600 hover:bg-primary-700 disabled:opacity-60 text-white font-semibold rounded-lg px-6 py-3 transition-colors"
+              className="w-full bg-primary-600 hover:bg-primary-700 disabled:opacity-60 text-white font-semibold rounded-full px-8 py-4 transition-colors text-base"
             >
               {isPending ? 'Enviando…' : 'Enviar mensaje'}
             </button>
 
             {siteKey && (
-              <p className="text-center text-xs text-slate-400">
+              <p className="text-center text-xs text-[#747b91]">
                 Protegido por reCAPTCHA.{' '}
                 <a href="https://policies.google.com/privacy" className="underline">Privacidad</a>{' '}
                 y{' '}

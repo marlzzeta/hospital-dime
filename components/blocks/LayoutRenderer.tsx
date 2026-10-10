@@ -6,15 +6,21 @@ import { DoctorCarouselSection } from './DoctorCarouselSection'
 import { TestimonialsSection } from './TestimonialsSection'
 import { LocationContactSection } from './LocationContactSection'
 import { ContactFormSection } from './ContactFormSection'
+import { WhyUsSection } from './WhyUsSection'
 
 function BlockSkeleton() {
-  return <div className="py-16 md:py-24 bg-slate-50 animate-pulse" />
+  return <div className="py-16 md:py-24 bg-[#f9f9f9] animate-pulse" />
 }
 
 function renderBlock(block: LayoutBlock, index: number) {
   switch (block.blockType) {
     case 'hero':
-      return <HeroSection key={block.id ?? index} block={block} />
+      return (
+        <React.Fragment key={block.id ?? index}>
+          <HeroSection block={block} />
+          <WhyUsSection />
+        </React.Fragment>
+      )
     case 'features':
       return <FeaturesSection key={block.id ?? index} block={block} />
     case 'doctorCarousel':

@@ -26,44 +26,41 @@ export function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-shadow duration-300 ${
-        scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)]' : 'bg-white'
       }`}
     >
-      {/* Top bar */}
+      {/* Emergency top bar */}
       <div className="bg-primary-600 text-white text-sm py-2 hidden md:block">
         <Container>
           <div className="flex justify-between items-center">
-            <span className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
+            <span className="flex items-center gap-2 font-medium">
+              <Phone className="w-3.5 h-3.5" />
               Emergencias 24h: <strong>+504 2234-5678</strong>
             </span>
-            <span>Lun–Vie 7:00–20:00 · Sáb 7:00–14:00</span>
+            <span className="text-primary-100">Lun–Vie 7:00–20:00 · Sáb 7:00–14:00</span>
           </div>
         </Container>
       </div>
 
       {/* Main nav */}
       <Container>
-        <nav className="flex items-center justify-between h-16 md:h-20">
+        <nav className="flex items-center justify-between h-[70px] md:h-[90px]">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center">
               <span className="text-white font-bold text-sm">HD</span>
             </div>
-            <div className="leading-tight">
-              <div className="font-bold text-slate-900 text-lg">Hospital DIME</div>
-              <div className="text-xs text-slate-500 hidden sm:block">Centro Médico</div>
-            </div>
+            <span className="font-bold text-[#031047] text-xl tracking-tight">Hospital DIME</span>
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-1">
+          <ul className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-primary-600 hover:bg-primary-50 transition-colors"
+                  className="px-4 py-2 text-base font-normal text-[#031047] hover:text-primary-600 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -73,7 +70,7 @@ export function Nav() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <Button href="#contacto" size="sm">
+            <Button href="#contacto" size="md">
               Agendar cita
             </Button>
           </div>
@@ -81,7 +78,7 @@ export function Nav() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+            className="md:hidden p-2 rounded-full text-[#031047] hover:bg-gray-100 transition-colors"
             aria-label="Menú"
           >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -97,7 +94,7 @@ export function Nav() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-slate-100 bg-white overflow-hidden"
+            className="md:hidden border-t border-gray-100 bg-white overflow-hidden"
           >
             <Container>
               <ul className="py-4 flex flex-col gap-1">
@@ -106,7 +103,7 @@ export function Nav() {
                     <Link
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="block px-4 py-3 rounded-lg text-slate-700 hover:text-primary-600 hover:bg-primary-50 font-medium transition-colors"
+                      className="block px-4 py-3 rounded-full text-[#031047] hover:text-primary-600 hover:bg-primary-50 font-medium transition-colors"
                     >
                       {link.label}
                     </Link>

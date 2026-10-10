@@ -2,9 +2,10 @@ import React from 'react'
 import { Container } from '@/components/ui/Container'
 import { Section, SectionHeading } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
-import { Heart, Activity, Microscope, Clock, Shield, Star } from 'lucide-react'
+import { Heart, Activity, Microscope, Clock, Shield, Star, ArrowUpRight, CalendarDays, Video } from 'lucide-react'
+import { WhyUsSection } from './blocks/WhyUsSection'
 
-const features = [
+const services = [
   {
     icon: Heart,
     title: 'Cardiología',
@@ -41,97 +42,121 @@ export function StaticHomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-24 md:py-32">
+      <section className="bg-white overflow-hidden">
         <Container>
-          <div className="max-w-3xl">
-            <span className="inline-block text-primary-200 text-sm font-semibold uppercase tracking-widest mb-4">
+          <div className="pt-16 pb-10 md:pt-24 md:pb-14 flex flex-col items-center text-center gap-6">
+            <p className="text-primary-600 font-semibold text-base uppercase tracking-widest">
               Centro Médico de Excelencia
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-              Tu salud, nuestra{' '}
-              <span className="text-accent-400">prioridad</span>
-            </h1>
-            <p className="text-xl text-primary-100 mb-10 max-w-2xl leading-relaxed">
-              Hospital DIME reúne a los mejores especialistas y la tecnología más avanzada para
-              brindarte atención médica de calidad en un ambiente cálido y seguro.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href="#contacto" variant="secondary" size="lg">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#031047] leading-[1.15] max-w-4xl">
+              Atención médica de alta calidad con los mejores especialistas
+            </h1>
+            <p className="text-lg text-[#747b91] max-w-xl leading-relaxed">
+              Hospital DIME reúne a los mejores especialistas y tecnología de vanguardia para brindarte atención de calidad.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center pt-2">
+              <Button href="#contacto" size="lg">
                 Agendar cita
               </Button>
-              <Button
-                href="#servicios"
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white/10"
-              >
+              <Button href="#servicios" variant="outline" size="lg">
                 Ver especialidades
+              </Button>
+            </div>
+          </div>
+
+          {/* Stats cards */}
+          <div className="pb-16 md:pb-24 flex flex-col sm:flex-row gap-4">
+            <div className="flex-1 bg-primary-600 rounded-[20px] p-7 text-white">
+              <p className="font-semibold text-lg mb-1">Nuevos pacientes</p>
+              <p className="text-5xl font-light">320+</p>
+              <p className="text-primary-200 text-sm mt-2">atendidos este mes</p>
+            </div>
+            <div className="flex-[2] bg-[#f9f9f9] rounded-[20px] p-7">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center shrink-0">
+                  <Video className="w-5 h-5 text-primary-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-[#031047] text-xl mb-1">Consulta virtual</p>
+                  <p className="text-[#747b91] text-sm leading-relaxed max-w-xs">
+                    Atención médica puntual con consulta virtual programada desde tu hogar.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-5">
+                <Button href="#contacto" variant="outline" size="sm">
+                  Ver servicios
+                </Button>
+              </div>
+            </div>
+            <div className="flex-1 bg-[#f9f9f9] rounded-[20px] p-7">
+              <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-4">
+                <CalendarDays className="w-5 h-5 text-primary-600" />
+              </div>
+              <p className="font-semibold text-[#031047] text-xl mb-2">Agenda tu cita</p>
+              <p className="text-[#747b91] text-sm leading-relaxed mb-5">
+                Disponibilidad inmediata con nuestros especialistas.
+              </p>
+              <Button href="#contacto" size="sm">
+                Agendar ahora
               </Button>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Stats */}
-      <div className="bg-white border-b border-slate-100">
-        <Container>
-          <div className="py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { value: '25+', label: 'Años de experiencia' },
-              { value: '40+', label: 'Especialistas' },
-              { value: '50k+', label: 'Pacientes atendidos' },
-              { value: '24/7', label: 'Emergencias' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-3xl font-bold text-primary-600">{stat.value}</div>
-                <div className="text-sm text-slate-500 mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </div>
+      {/* Why us */}
+      <WhyUsSection />
 
-      {/* Features */}
-      <Section background="surface" id="servicios">
+      {/* Services */}
+      <Section background="white" id="servicios">
         <Container>
           <SectionHeading
-            label="Nuestros servicios"
-            title="Especialidades médicas de primer nivel"
-            description="Contamos con más de 20 especialidades médicas para cubrir todas tus necesidades de salud."
+            label="Nuestros Servicios"
+            title="Cómo podemos ayudarte"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map(({ icon: Icon, title, description }) => (
+            {services.map(({ icon: Icon, title, description }) => (
               <div
                 key={title}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-slate-100 group"
+                className="flex flex-col rounded-[20px] overflow-hidden group border border-gray-100 hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary-50 flex items-center justify-center mb-4 group-hover:bg-primary-600 transition-colors">
-                  <Icon className="w-6 h-6 text-primary-600 group-hover:text-white transition-colors" />
+                <div className="bg-[#f9f9f9] flex items-center justify-center h-36">
+                  <div className="w-16 h-16 rounded-[12px] bg-white border border-[#dde3ff] flex items-center justify-center group-hover:bg-primary-600 transition-colors duration-300 shadow-sm">
+                    <Icon className="w-8 h-8 text-primary-600 group-hover:text-white transition-colors duration-300" />
+                  </div>
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2">{title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{description}</p>
+                <div className="bg-[#f9f9f9] flex flex-col gap-2 p-6 flex-1">
+                  <h3 className="font-semibold text-[#031047] text-2xl">{title}</h3>
+                  <p className="text-sm text-[#747b91] leading-relaxed flex-1">{description}</p>
+                  <div className="flex items-center gap-2 pt-3 text-[#031047] text-sm font-medium cursor-pointer">
+                    <span>Más información</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* CTA */}
-      <Section background="primary" id="contacto">
-        <Container narrow>
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      {/* CTA contact */}
+      <section className="py-16 md:py-24 bg-[#f9f9f9]" id="contacto">
+        <Container>
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-[#4666ff] text-sm font-semibold uppercase tracking-widest mb-3 block">Contacto</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#031047] mb-4">
               ¿Listo para agendar tu cita?
             </h2>
-            <p className="text-primary-100 text-lg mb-8">
+            <p className="text-[#747b91] text-lg mb-8">
               Nuestro equipo está disponible para ayudarte a encontrar el especialista que necesitas.
             </p>
-            <Button href="tel:+50422345678" variant="secondary" size="lg">
+            <Button href="tel:+50422345678" size="lg">
               Llamar ahora · +504 2234-5678
             </Button>
           </div>
         </Container>
-      </Section>
+      </section>
     </>
   )
 }

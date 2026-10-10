@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import '../globals.css'
 import React from 'react'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 
-const inter = Inter({
-  variable: '--font-inter',
+const roboto = Roboto({
+  variable: '--font-roboto',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 })
 
@@ -64,7 +65,7 @@ const hospitalJsonLd = {
 
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} h-full`}>
+    <html lang="es" className={`${roboto.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"
