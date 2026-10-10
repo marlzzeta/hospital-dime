@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Star, Smile, Users, Check } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
